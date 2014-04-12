@@ -26,7 +26,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.NavUtils;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
@@ -36,6 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements OnPageListener{
 
@@ -55,6 +55,7 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     ViewPager mViewPager;
     List<Fragment> fragments = new Vector<Fragment>();
     TextView tv;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,23 +88,31 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     }
     
     @Override
-	public void onPage2(String s) {
+	public void settaGiocatore(String s,int position) {
+    	Toast t = Toast.makeText(this, "position = "+position, Toast.LENGTH_SHORT);			
+		t.show();	
 		Page2Fragment f2 = (Page2Fragment) fragments.get(1);
-		TextView portiere = (TextView) f2.getView().findViewById(R.id.portiere);
-		portiere.setText(s);
-		View v2 = f2.getView();
-		if(v2 != null){
-			f2.setText(s);
-		}
+		if(position < 3)
+			f2.settaPortiere(s);
+		else if((position > 2) &&  (position < 11))
+				f2.settaDifensore(s);
+		else if((position > 10) && (position <19))
+			f2.settaCentrocampista(s);
+		else if((position > 18) && (position <25))
+			f2.settaAttaccante(s);
+			
+		
+		
 	}
     
     
-
+    
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class PagerAdapter extends FragmentStatePagerAdapter {
+    
+ public class PagerAdapter extends FragmentStatePagerAdapter {
     	
     	private List<Fragment> fragments;
 
@@ -136,8 +145,21 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
             }
             return null;
         }
-
-		
-    }
-
+    
+   
+	}
 }
+
+    
+    
+
+    
+   
+
+    	
+   
+
+
+
+	
+

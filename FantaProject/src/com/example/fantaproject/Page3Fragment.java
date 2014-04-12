@@ -20,7 +20,8 @@ public class Page3Fragment extends ListFragment{
 	private OnPageListener pageListener;
 	
 	public interface OnPageListener{
-		public void onPage2(String s);
+		public void settaGiocatore(String s,int position);
+
 	}
 	
 	public void onAttach(Activity activity){
@@ -28,16 +29,7 @@ public class Page3Fragment extends ListFragment{
 		if(activity instanceof OnPageListener){
 			pageListener = (OnPageListener) activity;
 		}
-		else pageListener = new OnPageListener(){
-
-			@Override
-			public void onPage2(String s) {
-				
-				Log.d("Pag1","Button event from page 1 : "+s);
-			}
-			
-		};
-	
+		
 	}
 	
 	public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
@@ -51,9 +43,7 @@ public class Page3Fragment extends ListFragment{
 	@Override
 	  public void onActivityCreated(Bundle savedInstanceState) {
 	    super.onActivityCreated(savedInstanceState);
-	    String[] values = new String[] { "Reina", "Maicon", "Benatia",
-	        "Barzagli", "Pjanic", "Pirlo", "Vidal", "Cerci",
-	        "Higuain", "Callejon" ,"Tevez"};
+	    String[] values = new String[] { "Reina","Valdes","Buffon","Maicon", "Benatia","Barzagli","Paci","Albiol","Fernandez","Chiellini","Puyol","Pjanic", "Pirlo", "Vidal", "Cerci","Taarabt","Candreva","Totti","Diamanti","Higuain", "Callejon" ,"Tevez","Balotelli","Destro","Lorente"};
 	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, values);
 	    setListAdapter(adapter);
 	  }
@@ -62,11 +52,9 @@ public class Page3Fragment extends ListFragment{
 	  public void onListItemClick(ListView l, View v, int position, long id) {
 	    // do something with the data
 		  	String item = (String) getListAdapter().getItem(position);	
-		  	pageListener.onPage2(item);
-		  	Toast t = Toast.makeText(getActivity(), item+" aggiunto al campo", Toast.LENGTH_SHORT);			
-			t.show();	
-	
-	  }
+		  	pageListener.settaGiocatore(item,position);
+		  	
+		  }
 	  
 	  
 	  
