@@ -112,7 +112,7 @@ public MyExpandableListAdapter(Page1Fragment page1Fragment, SparseArray<Group> g
       convertView = inflater.inflate(R.layout.listrow_group, null);
     }
     Group group = (Group) getGroup(groupPosition);
-    CheckedTextView cw= (CheckedTextView) convertView.findViewById(R.id.textView1);
+    CheckedTextView cw= (CheckedTextView) convertView.findViewById(R.id.p);
     Drawable img = parent.getContext().getResources().getDrawable(caricaScudetto(group.string));
     img.setBounds(0,0,100,100);
     cw.setCompoundDrawables( img, null, null, null );
@@ -158,6 +158,14 @@ public MyExpandableListAdapter(Page1Fragment page1Fragment, SparseArray<Group> g
 		 return R.drawable.chievo;
 	 if(squadra.equalsIgnoreCase("milan"))
 		 return R.drawable.milan;
+	 if(squadra.equalsIgnoreCase("sassuolo"))
+		 return R.drawable.sassuolo; 
+	 if(squadra.equalsIgnoreCase("torino"))
+			 return R.drawable.torino;
+	 if(squadra.equalsIgnoreCase("atalanta"))
+		 return R.drawable.atalanta;
+	 if(squadra.equalsIgnoreCase("livorno"))
+		 return R.drawable.livorno;
 	
 	 
 	 return R.drawable.ic_launcher;

@@ -16,6 +16,7 @@ import org.htmlcleaner.TagNode;
 import org.htmlcleaner.XPatherException;
 
 import com.example.fantandroid.R;
+import com.example.fantaproject.Page3Fragment.OnPageListener;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -35,7 +37,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements OnPageListener{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -66,12 +68,13 @@ public class MainActivity extends FragmentActivity {
         fragments.add(Fragment.instantiate(this,Page3Fragment.class.getName()));
 
         this.mSectionsPagerAdapter = new PagerAdapter(super.getSupportFragmentManager(),fragments);
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
     }
+    
+    
     
     
 	
@@ -83,13 +86,24 @@ public class MainActivity extends FragmentActivity {
         return true;
     }
     
+    @Override
+	public void onPage2(String s) {
+		Page2Fragment f2 = (Page2Fragment) fragments.get(1);
+		TextView portiere = (TextView) f2.getView().findViewById(R.id.portiere);
+		portiere.setText(s);
+		View v2 = f2.getView();
+		if(v2 != null){
+			f2.setText(s);
+		}
+	}
+    
     
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
      */
-    public class PagerAdapter extends FragmentPagerAdapter {
+    public class PagerAdapter extends FragmentStatePagerAdapter {
     	
     	private List<Fragment> fragments;
 
@@ -122,8 +136,8 @@ public class MainActivity extends FragmentActivity {
             }
             return null;
         }
-    }
 
-    
+		
+    }
 
 }
