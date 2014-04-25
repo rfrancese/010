@@ -18,8 +18,15 @@ import org.htmlcleaner.XPatherException;
 import com.example.fantandroid.R;
 import com.example.fantaproject.Page3Fragment.OnPageListener;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Contacts.People;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -27,6 +34,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -34,6 +42,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,28 +62,61 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     /**
      * The {@link ViewPager} that will host the section contents.
      */
+    	
     ViewPager mViewPager;
     List<Fragment> fragments = new Vector<Fragment>();
     TextView tv;
-    
+    private static final int PICK_CONTACT=131072;
+    String phoneNumber;
+  
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the app.
+     // creating fragments and adding to list
         fragments.add(Fragment.instantiate(this,Page1Fragment.class.getName()));
         fragments.add(Fragment.instantiate(this,Page2Fragment.class.getName()));
         fragments.add(Fragment.instantiate(this,Page3Fragment.class.getName()));
-
-        this.mSectionsPagerAdapter = new PagerAdapter(super.getSupportFragmentManager(),fragments);
+        this.mSectionsPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+      
 
+        
     }
+    
+   
+    
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
+    	super.onActivityResult(reqCode, resultCode, data);
+ 
+    	if(reqCode == PICK_CONTACT && resultCode == Activity.RESULT_OK){
+    			Cursor cursor = managedQuery(data.getData(),null,null,null,null);
+    			while(cursor.moveToNext()){
+    			String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+    			Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID+" = "+contactId,null,null);
+    				while (phones.moveToNext()) 
+    				{
+    					phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+    				}
+    				
+    	        phones.close();
+    			SmsManager smanager = SmsManager.getDefault();
+    			//String s = data.getStringExtra("formazioneTitolare");
+    			Page2Fragment f2 = (Page2Fragment) fragments.get(1);
+				smanager.sendTextMessage(phoneNumber,null,f2.formazioneTitolare,null,null);
+				Toast t2 = Toast.makeText(this,"Messaggio inviato", Toast.LENGTH_SHORT);			
+				t2.show();
+    			}
+    	}
+    	
+    }
+    
+   
+
     
     
     
@@ -89,17 +132,19 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     
     @Override
 	public void settaGiocatore(String s,int position) {
-    	Toast t = Toast.makeText(this, "position = "+position, Toast.LENGTH_SHORT);			
-		t.show();	
-		Page2Fragment f2 = (Page2Fragment) fragments.get(1);
-		if(position < 3)
-			f2.settaPortiere(s);
-		else if((position > 2) &&  (position < 11))
+    	Page2Fragment f2 = (Page2Fragment) fragments.get(1);
+    	
+		View v2 = f2.getView();
+        if(v2 != null){
+			if(position < 3)
+				f2.settaPortiere(s);
+			else if((position > 2) &&  (position < 11))
 				f2.settaDifensore(s);
-		else if((position > 10) && (position <19))
-			f2.settaCentrocampista(s);
-		else if((position > 18) && (position <25))
-			f2.settaAttaccante(s);
+			else if((position > 10) && (position <19))
+				f2.settaCentrocampista(s);
+			else if((position > 18) && (position <25))
+				f2.settaAttaccante(s);
+        }
 			
 		
 		
@@ -112,27 +157,26 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
      * one of the sections/tabs/pages.
      */
     
- public class PagerAdapter extends FragmentStatePagerAdapter {
+ public class PagerAdapter extends FragmentPagerAdapter {
     	
-    	private List<Fragment> fragments;
-
-        public PagerAdapter(FragmentManager fm, List<Fragment> fragments) {
+    	
+        public PagerAdapter(FragmentManager fm) {
             super(fm);
-            this.fragments= fragments;
         }
 
         @Override
         public Fragment getItem(int position) {
-           
-            return this.fragments.get(position);
-        }
+        	 	
+                 return fragments.get(position);
+             }
 
-        @Override
-        public int getCount() {
-            return this.fragments.size();
-        }
-
-        @Override
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return 3;
+		}
+          
+		@Override
         public CharSequence getPageTitle(int position) {
             Locale l = Locale.getDefault();
             switch (position) {
@@ -145,10 +189,16 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
             }
             return null;
         }
+       }
+}
+
+       
+        
+    
+
+        
     
    
-	}
-}
 
     
     

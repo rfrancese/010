@@ -53,6 +53,8 @@ public class Page3Fragment extends ListFragment{
 	    // do something with the data
 		  	String item = (String) getListAdapter().getItem(position);	
 		  	pageListener.settaGiocatore(item,position);
+		  	Toast t = Toast.makeText(getActivity(), item+" aggiunto al campo", Toast.LENGTH_SHORT);			
+			t.show();
 		  	
 		  }
 	  
