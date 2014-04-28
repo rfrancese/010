@@ -32,6 +32,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.telephony.SmsManager;
@@ -74,15 +75,18 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       
      // creating fragments and adding to list
         fragments.add(Fragment.instantiate(this,Page1Fragment.class.getName()));
         fragments.add(Fragment.instantiate(this,Page2Fragment.class.getName()));
         fragments.add(Fragment.instantiate(this,Page3Fragment.class.getName()));
+     
+
         this.mSectionsPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-      
+        
 
         
     }
@@ -132,8 +136,11 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     
     @Override
 	public void settaGiocatore(String s,int position) {
+    	//Page2Fragment f2 = (Page2Fragment) mSectionsPagerAdapter.getItem(1);
+    	fragments = getSupportFragmentManager().getFragments();
     	Page2Fragment f2 = (Page2Fragment) fragments.get(1);
-    	
+
+    	mViewPager.setCurrentItem(1);
 		View v2 = f2.getView();
         if(v2 != null){
 			if(position < 3)
@@ -145,11 +152,13 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
 			else if((position > 18) && (position <25))
 				f2.settaAttaccante(s);
         }
-			
-		
-		
-	}
+        
+   
+    }
     
+    protected void onSaveInstanceState(Bundle outState){
+    	super.onSaveInstanceState(outState);
+    }
     
     
     /**
@@ -159,14 +168,14 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     
  public class PagerAdapter extends FragmentPagerAdapter {
     	
-    	
-        public PagerAdapter(FragmentManager fm) {
-            super(fm);
+        public PagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
         }
 
-        @Override
+        
+
+		@Override
         public Fragment getItem(int position) {
-        	 	
                  return fragments.get(position);
              }
 
@@ -189,6 +198,8 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
             }
             return null;
         }
+		
+		
        }
 }
 

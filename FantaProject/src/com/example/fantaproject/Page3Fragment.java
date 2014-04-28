@@ -57,6 +57,14 @@ public class Page3Fragment extends ListFragment{
 			t.show();
 		  	
 		  }
+
+	public static Fragment newInstance(int position) {
+		Page3Fragment p3 = new Page3Fragment();
+		 Bundle args = new Bundle();
+	        args.putInt("val", position);
+	        p3.setArguments(args);
+		return p3;
+	}
 	  
 	  
 	  

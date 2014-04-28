@@ -44,6 +44,8 @@ public class Page1Fragment extends Fragment{
     private ProgressBar progressBar;
     View view;
 	  SparseArray<Group> groups = new SparseArray<Group>();
+	  
+	 
 
 	
    public View onCreateView(LayoutInflater inflater,ViewGroup container,Bundle savedInstanceState){
@@ -161,6 +163,17 @@ public class Page1Fragment extends Fragment{
 				progressBar.setVisibility(ProgressBar.GONE);
 
 	        }
+	}
+
+
+
+
+	public static Fragment newInstance(int position) {
+		Page1Fragment p1 = new Page1Fragment();
+		 Bundle args = new Bundle();
+	        args.putInt("val", position);
+	        p1.setArguments(args);
+		return p1;
 	}
 }
 		

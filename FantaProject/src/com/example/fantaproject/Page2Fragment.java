@@ -27,18 +27,18 @@ public class Page2Fragment extends Fragment{
 	TextView d;
 	TextView c;
 	TextView a;
-	String p="";
-	String d1="";
-	String d2="";
-	String d3="";
-	String d4="";
-	String c1="";
-	String c2="";
-	String c3="";
-	String c4="";
-	String a1="";
-	String a2="";
-	String a3="";
+	TextView p;
+	TextView d1;
+	TextView d2;
+	TextView d3;
+	TextView d4;
+	TextView c1;
+	TextView c2;
+	TextView c3;
+	TextView c4;
+	TextView a1;
+	TextView a2;
+	TextView a3;
 
 
 
@@ -58,7 +58,17 @@ public class Page2Fragment extends Fragment{
 		if(container == null)
 			return null;
 		View view = inflater.inflate(R.layout.fragment_squadra,container,false);
-
+		p = (TextView) view.findViewById(R.id.portiere);
+		d1 = (TextView) view.findViewById(R.id.d1);
+		d2= (TextView) view.findViewById(R.id.d2);
+		d3 = (TextView) view.findViewById(R.id.d3);
+		c1 = (TextView) view.findViewById(R.id.c1);
+		c2 = (TextView) view.findViewById(R.id.c2);
+		c3 = (TextView) view.findViewById(R.id.c3);
+		c4 = (TextView) view.findViewById(R.id.c4);
+		a1 = (TextView) view.findViewById(R.id.a1);
+		a2 = (TextView) view.findViewById(R.id.a2);
+		a3 = (TextView) view.findViewById(R.id.a3);
 
 		
 		return view;
@@ -66,17 +76,7 @@ public class Page2Fragment extends Fragment{
 	
 	 @Override
 	public void onSaveInstanceState(Bundle outState){
-		TextView p = (TextView) getView().findViewById(R.id.portiere);
-		TextView d1 = (TextView) getView().findViewById(R.id.d1);
-		TextView d2= (TextView) getView().findViewById(R.id.d2);
-		TextView d3 = (TextView) getView().findViewById(R.id.d3);
-		TextView c1 = (TextView) getView().findViewById(R.id.c1);
-		TextView c2 = (TextView) getView().findViewById(R.id.c2);
-		TextView c3 = (TextView) getView().findViewById(R.id.c3);
-		TextView c4 = (TextView) getView().findViewById(R.id.c4);
-		TextView a1 = (TextView) getView().findViewById(R.id.a1);
-		TextView a2 = (TextView) getView().findViewById(R.id.a2);
-		TextView a3 = (TextView) getView().findViewById(R.id.a3);
+		
 		outState.putString("p",(String) p.getText());
 		outState.putString("d1",(String) d1.getText());
 		outState.putString("d2",(String) d2.getText());
@@ -105,17 +105,7 @@ public class Page2Fragment extends Fragment{
 	  public void onActivityCreated(Bundle savedInstanceState) {
 	    super.onActivityCreated(savedInstanceState);
 	    if(savedInstanceState != null){
-	    	TextView p = (TextView) getView().findViewById(R.id.portiere);
-			TextView d1 = (TextView) getView().findViewById(R.id.d1);
-			TextView d2= (TextView) getView().findViewById(R.id.d2);
-			TextView d3 = (TextView) getView().findViewById(R.id.d3);
-			TextView c1 = (TextView) getView().findViewById(R.id.c1);
-			TextView c2 = (TextView) getView().findViewById(R.id.c2);
-			TextView c3 = (TextView) getView().findViewById(R.id.c3);
-			TextView c4 = (TextView) getView().findViewById(R.id.c4);
-			TextView a1 = (TextView) getView().findViewById(R.id.a1);
-			TextView a2 = (TextView) getView().findViewById(R.id.a2);
-			TextView a3 = (TextView) getView().findViewById(R.id.a3);
+	    	
 			p.setText(savedInstanceState.getString("p"));
 			d1.setText(savedInstanceState.getString("d1"));
 			d2.setText(savedInstanceState.getString("d2"));
@@ -140,17 +130,7 @@ public class Page2Fragment extends Fragment{
 
 			@Override
 			public void onClick(View v) {
-				TextView p = (TextView) getView().findViewById(R.id.portiere);
-				TextView d1 = (TextView) getView().findViewById(R.id.d1);
-				TextView d2= (TextView) getView().findViewById(R.id.d2);
-				TextView d3 = (TextView) getView().findViewById(R.id.d3);
-				TextView c1 = (TextView) getView().findViewById(R.id.c1);
-				TextView c2 = (TextView) getView().findViewById(R.id.c2);
-				TextView c3 = (TextView) getView().findViewById(R.id.c3);
-				TextView c4 = (TextView) getView().findViewById(R.id.c4);
-				TextView a1 = (TextView) getView().findViewById(R.id.a1);
-				TextView a2 = (TextView) getView().findViewById(R.id.a2);
-				TextView a3 = (TextView) getView().findViewById(R.id.a3);
+				
 				formazioneTitolare += p.getText()+"\n"+d1.getText()+"\n"+d2.getText()+"\n"+d3.getText()+"\n"+c1.getText()+"\n"+c2.getText()+"\n"+c3.getText()+"\n"+c4.getText()+"\n"+a1.getText()+"\n"+a2.getText()+"\n"+a3.getText()+"\n";
 				Intent i = new Intent(Intent.ACTION_PICK,ContactsContract.Contacts.CONTENT_URI);
 			//	i.putExtra("formazioneTitolare", formazioneTitolare);
@@ -262,6 +242,14 @@ public class Page2Fragment extends Fragment{
 			k=1;
 		}
 		}
+
+	public static Fragment newInstance(int position) {
+		Page2Fragment p2 = new Page2Fragment();
+		 Bundle args = new Bundle();
+	        args.putInt("val", position);
+	        p2.setArguments(args);
+		return p2;
+	}
 }
 			
 			
