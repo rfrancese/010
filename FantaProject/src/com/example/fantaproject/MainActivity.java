@@ -110,6 +110,7 @@ public class MainActivity extends FragmentActivity implements OnPageListener{
     	        phones.close();
     			SmsManager smanager = SmsManager.getDefault();
     			//String s = data.getStringExtra("formazioneTitolare");
+    	    	fragments = getSupportFragmentManager().getFragments();
     			Page2Fragment f2 = (Page2Fragment) fragments.get(1);
 				smanager.sendTextMessage(phoneNumber,null,f2.formazioneTitolare,null,null);
 				Toast t2 = Toast.makeText(this,"Messaggio inviato", Toast.LENGTH_SHORT);			

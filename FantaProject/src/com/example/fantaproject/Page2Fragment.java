@@ -130,6 +130,17 @@ public class Page2Fragment extends Fragment{
 
 			@Override
 			public void onClick(View v) {
+				/*TextView p = (TextView) v.findViewById(R.id.portiere);
+				TextView d1 = (TextView) v.findViewById(R.id.d1);
+				TextView d2= (TextView) v.findViewById(R.id.d2);
+				TextView d3 = (TextView) v.findViewById(R.id.d3);
+				TextView c1 = (TextView) v.findViewById(R.id.c1);
+				TextView c2 = (TextView) v.findViewById(R.id.c2);
+				TextView c3 = (TextView) v.findViewById(R.id.c3);
+				TextView c4 = (TextView) v.findViewById(R.id.c4);
+				TextView a1 = (TextView) v.findViewById(R.id.a1);
+				TextView a2 = (TextView) v.findViewById(R.id.a2);
+				TextView a3 = (TextView) v.findViewById(R.id.a3);*/
 				
 				formazioneTitolare += p.getText()+"\n"+d1.getText()+"\n"+d2.getText()+"\n"+d3.getText()+"\n"+c1.getText()+"\n"+c2.getText()+"\n"+c3.getText()+"\n"+c4.getText()+"\n"+a1.getText()+"\n"+a2.getText()+"\n"+a3.getText()+"\n";
 				Intent i = new Intent(Intent.ACTION_PICK,ContactsContract.Contacts.CONTENT_URI);
