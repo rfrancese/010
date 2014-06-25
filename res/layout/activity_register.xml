@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+	<ScrollView
+	    android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+             android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+              
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:background="#ffffff"
+        android:textColor="#000000"
+        
+        android:hint="Username" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText3"
+        android:background="#ffffff"
+        android:textColor="#000000"
+        android:ems="10"
+        android:hint="Password" >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText4"
+        android:background="#00ff00"
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:text="Portieri:" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText1"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText2"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText5"
+        android:background="#ccff00"
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:text="Difensori:" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText6"
+        
+        android:textColor="#000000"
+        android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText7"
+       
+        android:textColor="#000000"
+        android:padding="10dip"
+        android:ems="10" />
+    
+
+    <AutoCompleteTextView
+        android:id="@+id/editText9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText8"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText9"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText10"
+       
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+    
+    <AutoCompleteTextView
+        android:id="@+id/editText12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText11"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+    
+    <AutoCompleteTextView
+        android:id="@+id/editText13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText12"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+    
+     <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText13"
+        android:background="#00ffff"
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:text="Centrocampisti:" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText14"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText15"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText16"
+       
+       android:textColor="#000000"
+        android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText17"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText18"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+    
+    <AutoCompleteTextView
+        android:id="@+id/editText20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText19"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+    
+    <AutoCompleteTextView
+        android:id="@+id/editText21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText20"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+    
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText21"
+        android:background="#cc0000"
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:text="Attaccanti:" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView4"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText22"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText23"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText24"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText25"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+
+    <AutoCompleteTextView
+        android:id="@+id/editText27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/editText26"
+        
+        android:textColor="#000000"
+         android:padding="10dip"
+        android:ems="10" />
+            
+    <Button
+	    android:id="@+id/button3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:layout_below="@+id/editText27"
+	    
+	     android:background="@drawable/registrati"
+        android:text=" " />
+	</RelativeLayout>
+      </ScrollView>
+   
+</RelativeLayout>
